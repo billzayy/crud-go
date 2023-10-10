@@ -2,9 +2,9 @@ version: "3.9"
 services:
   golang:
     container_name: golang
-    image: coderbillzay/web-go
+    image: coderbillzay/crud-go
     ports:
-      - '27564:27564'
+      - '8000:8000'
     volumes:
       - ./:/server
     restart: always

@@ -15,7 +15,7 @@ import (
 
 func main() {
 	godotenv.Load()
-	gin.SetMode(gin.ReleaseMode)
+	// gin.SetMode(gin.ReleaseMode)
 
 	// programmatically set swagger info
 	docs.SwaggerInfo.Title = "Swagger Example GoLang CRUD API"
