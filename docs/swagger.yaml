@@ -1,0 +1,132 @@
+definitions:
+  models.AddUser:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  models.DeleteUser:
+    properties:
+      id:
+        type: integer
+    type: object
+  models.User:
+    properties:
+      email:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /create-user:
+    post:
+      consumes:
+      - application/json
+      description: Create user
+      parameters:
+      - description: New User
+        in: body
+        name: userInfo
+        required: true
+        schema:
+          $ref: '#/definitions/models.AddUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Create User
+      tags:
+      - User accounts
+  /delete-user:
+    delete:
+      consumes:
+      - application/json
+      description: Delete user
+      parameters:
+      - description: Delete User
+        in: body
+        name: userInfo
+        required: true
+        schema:
+          $ref: '#/definitions/models.DeleteUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Delete User
+      tags:
+      - User accounts
+  /get-all-user:
+    get:
+      consumes:
+      - application/json
+      description: get all user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Show All User
+      tags:
+      - User accounts
+  /get-user/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get user by id
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Show User By Id
+      tags:
+      - User accounts
+  /update-user:
+    put:
+      consumes:
+      - application/json
+      description: Update user
+      parameters:
+      - description: Update User
+        in: body
+        name: userInfo
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Update User
+      tags:
+      - User accounts
+swagger: "2.0"

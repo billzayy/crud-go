@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  golang:
+    container_name: golang
+    image: coderbillzay/web-go
+    ports:
+      - '27564:27564'
+    volumes:
+      - ./:/server
+    restart: always
+    links:
+      - db
+
+  db:
+    container_name: db
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_DATABASE=golang
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./database/mysql:/var/lib/mysql
+      - ./database/db/init.sql:/docker-entrypoint-initdb.d/init.sql
