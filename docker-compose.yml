@@ -7,14 +7,14 @@ services:
       - '8000:8000'
     volumes:
       - ./:/server
-    restart: always
+    # restart: always
     links:
       - db
 
   db:
     container_name: db
     image: mysql:8.0
-    restart: always
+    # restart: always
     environment:
       - MYSQL_DATABASE=golang
       - MYSQL_ROOT_PASSWORD=password
