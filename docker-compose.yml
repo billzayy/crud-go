@@ -33,5 +33,5 @@ services:
       - 50000:50000
     container_name: jenkins
     volumes:
-      - /.jekins/${myname}/jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - /.jekins/jenkins_compose/jenkins_configuration:/var/jenkins_home
       - ./jenkins/var/run/docker.sock:/var/run/docker.sock
