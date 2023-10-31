@@ -7,14 +7,14 @@ services:
       - '8000:8000'
     volumes:
       - ./:/server
-    # restart: always
+    restart: always
     links:
       - db
 
   db:
     container_name: db
     image: mysql:8.0
-    # restart: always
+    restart: always
     environment:
       - MYSQL_DATABASE=golang
       - MYSQL_ROOT_PASSWORD=password
@@ -23,3 +23,15 @@ services:
     volumes:
       - ./database/mysql:/var/lib/mysql
       - ./database/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  jenkins:
+    image: jenkins/jenkins
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    container_name: jenkins
+    volumes:
+      - /.jekins/${myname}/jenkins_compose/jenkins_configuration:/var/jenkins_home
+      - ./jenkins/var/run/docker.sock:/var/run/docker.sock
