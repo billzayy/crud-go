@@ -1,6 +1,5 @@
 /vendor
 /tmp
-.env
 /database/mysql
 .vscode
 crud-go
