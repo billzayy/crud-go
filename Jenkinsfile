@@ -28,8 +28,8 @@ pipeline {
         steps{
             script{
                 withDockerRegistry(credentialsId: 'billzay-docker', toolName: 'Docker', url: 'https://index.docker.io/v1/') {
-                    sh 'sudo docker build -t coderbillzay/crud-go .'
-                    sh 'sudo docker push coderbillzay/crud-go'
+                    sh 'sudo -S docker build -t coderbillzay/crud-go .'
+                    sh 'sudo -S docker push coderbillzay/crud-go'
                 }
             }
         }
