@@ -33,6 +33,7 @@ func main() {
 		ExposeHeaders:    []string{"Link"},
 		AllowAllOrigins:  true,
 		AllowCredentials: false,
+		AllowOrigins:     []string{"*"},
 		MaxAge:           300,
 	}))
 
