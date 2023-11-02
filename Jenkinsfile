@@ -14,9 +14,24 @@ pipeline {
         sh 'go version'
       }
     }
-    stage('Run'){
+    stage('Check Docker'){
         steps{
-            sh 'go run .'
+            sh 'docker version'
+        }
+    }
+    stage('Build & Push Images'){
+        steps{
+            script{
+                withDockerRegistry(credentialsId: 'billzay-docker', toolName: 'Docker', url: 'https://index.docker.io/v1/') {
+                    sh 'docker build -t coderbillzay/crud-go .'
+                    sh 'docker push coderbillzay/crud-go'
+                }
+            }
+        }
+    }
+    stage('Docker Run'){
+        steps{
+            sh 'docker-compose up -d'
         }
     }
   }
