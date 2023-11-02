@@ -4,11 +4,6 @@ pipeline {
   tools { go '1.21.3' }
     
   stages {
-    // stage('Docker Compose Down Previous'){
-    //     steps{
-    //         sh 'docker-compose down'
-    //     }
-    // }
     stage('Git Checkout') {
         steps {
             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/billzayy/crud-go']])
@@ -28,8 +23,8 @@ pipeline {
         steps{
             script{
                 withDockerRegistry(credentialsId: 'billzay-docker', toolName: 'Docker', url: 'https://index.docker.io/v1/') {
-                    sh 'sudo -S docker build -t coderbillzay/crud-go .'
-                    sh 'sudo -S docker push coderbillzay/crud-go'
+                    sh 'docker build -t coderbillzay/crud-go .'
+                    sh 'docker push coderbillzay/crud-go'
                 }
             }
         }

@@ -21,20 +21,20 @@ func main() {
 	docs.SwaggerInfo.Title = "Swagger Example GoLang CRUD API"
 	docs.SwaggerInfo.Description = "This is a sample Golang server."
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "localhost:" + os.Getenv("PORT")
+	docs.SwaggerInfo.Host = "34.126.164.82:" + os.Getenv("PORT")
 	docs.SwaggerInfo.BasePath = "/api"
 	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 
 	app := gin.Default()
 
+	cors.Default()
 	app.Use(cors.New(cors.Config{
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"*"},
 		ExposeHeaders:    []string{"Link"},
 		AllowAllOrigins:  true,
 		AllowCredentials: false,
-		// AllowOrigins:     []string{"*"},
-		MaxAge: 300,
+		MaxAge:           300,
 	}))
 
 	api := app.Group("/api")
