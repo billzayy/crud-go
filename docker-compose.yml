@@ -4,7 +4,7 @@ services:
     container_name: golang
     image: coderbillzay/crud-go
     ports:
-      - '8000:8000'
+      - '3490:3490'
     volumes:
       - ./:/server
     restart: always
