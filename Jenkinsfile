@@ -4,11 +4,11 @@ pipeline {
   tools { go '1.21.3' }
     
   stages {
-    stage('Docker Compose Down Previous'){
-        steps{
-            sh 'docker-compose down'
-        }
-    }
+    // stage('Docker Compose Down Previous'){
+    //     steps{
+    //         sh 'docker-compose down'
+    //     }
+    // }
     stage('Git Checkout') {
         steps {
             checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/billzayy/crud-go']])
